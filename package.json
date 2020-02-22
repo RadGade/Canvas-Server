@@ -4,13 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "apollo-datasource-rest": "^0.7.0",
     "apollo-server": "^2.10.1",
     "graphql": "^14.6.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon --exec babel-node index.js",
     "build": "babel index.js -d dist",
     "start": "npm run build && node dist/index.js",
     "test": "mocha --require @babel/register"
@@ -19,6 +20,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
     "mocha": "^7.0.1"
