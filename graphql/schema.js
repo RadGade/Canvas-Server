@@ -9,26 +9,22 @@ const {gql} = require('apollo-server');
         quality : String!
     }
 
-    type Image {
-        poster : String!
-        backdrop : String!
-    }
-
     type MovieDetails {
         id : String!
+        filesize : String!
         title : String!
-        year : Int!
+        year : String!
         synopsis : String!
         runtime : String!
         relased : Int!
         certification : String!
-        torrents : [Torrent]!
         trailer : String!
-        images : [Image]
+        image : String!
+        url : String!
     }
 
     type Query {
-        getMovieDetails(id: ID!) : MovieDetails
+        getMovieDetails(id: String!, source: String!) : MovieDetails
     }
 `
 module.exports = typeDefs;

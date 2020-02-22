@@ -6,22 +6,25 @@ export class PopcornAPI extends RESTDataSource {
         this.baseURL = 'https://tv-v2.api-fetch.website/'
     }
 
-    detailReducer({id, title, year, synopsis, runtime, relased, certification, trailer} = {}) {
+    detailReducer({_id, title, url, filesize, year, synopsis, runtime, released, certification, trailer, torrents, images} = {}) {
         return {
-            id,
+            id : _id,
             title,
             year,
             synopsis,
             runtime,
-            relased,
+            released,
             certification,
             trailer,
+            images: images.poster,
+            url : torrents.en['720p'].url,
+            filesize : torrents.en['720p'].filesize,
         }
     }
 
     async getMovieDetail(id) {
-        const rawdata = await this.get(`movie/${id}`)
-        let result = rawdata.json()
+        const result = await this.get(`movie/${id}`)
+         console.log(this.detailReducer(result))
         return this.detailReducer(result)
     }
 
