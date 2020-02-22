@@ -16,15 +16,16 @@ const {gql} = require('apollo-server');
         year : String!
         synopsis : String!
         runtime : String!
-        relased : Int!
+        relased : Int
         certification : String!
         trailer : String!
-        image : String!
+        image : String
         url : String!
     }
 
     type Query {
         getMovieDetails(id: String!, source: String!) : MovieDetails
+        getMoview(page: Int!, source: String!) : [MovieDetails!]!
     }
 `
 module.exports = typeDefs;

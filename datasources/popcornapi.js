@@ -24,7 +24,12 @@ export class PopcornAPI extends RESTDataSource {
 
     async getMovieDetail(id) {
         const result = await this.get(`movie/${id}`)
-         console.log(this.detailReducer(result))
+        console.log(this.detailReducer(result))
+        return this.detailReducer(result)
+    }
+
+    async getMoviesByPage(num) {
+        const result = await this.get(`movies/${num}`)
         return this.detailReducer(result)
     }
 
