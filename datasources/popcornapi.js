@@ -1,12 +1,12 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
+const { RESTDataSource } = require('apollo-datasource-rest');
 
-class PopcornAPI extends RESTDataSource {
+export class PopcornAPI extends RESTDataSource {
     constructor() {
         super()
         this.baseURL = 'https://tv-v2.api-fetch.website/'
     }
 
-    detailReducer({id, title, year, synopsis, runtime, relased, certification, torrents, trailer, images} = {}) {
+    detailReducer({id, title, year, synopsis, runtime, relased, certification, trailer} = {}) {
         return {
             id,
             title,
@@ -15,17 +15,7 @@ class PopcornAPI extends RESTDataSource {
             runtime,
             relased,
             certification,
-            torrents = {
-                url,
-                filesize,
-                provider,
-                quality
-            },
             trailer,
-            images = {
-                poster,
-                backdrop
-            }
         }
     }
 
@@ -40,4 +30,3 @@ class PopcornAPI extends RESTDataSource {
     }
 }
 
-export default PopcornAPI

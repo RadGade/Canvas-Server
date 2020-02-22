@@ -1,6 +1,6 @@
-import PopcornAPI from './popcornapi';
+import {PopcornAPI} from './popcornapi';
 
 
 export default {
-    PopcornAPI: new PopcornAPI()
+    PopcornAPI:  new PopcornAPI()
 }
