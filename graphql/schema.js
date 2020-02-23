@@ -6,7 +6,9 @@ const {gql} = require('apollo-server');
         url : String!
         filesize : String!
         provider : String!
-        quality : String!
+        seed : Int
+        size : Int
+        peer : Int
     }
 
     type MovieDetails {
@@ -17,15 +19,16 @@ const {gql} = require('apollo-server');
         synopsis : String!
         runtime : String!
         relased : Int
-        certification : String!
+        certification : String
         trailer : String!
-        image : String
-        url : String!
+        images : String
+        url : String
     }
 
     type Query {
-        getMovieDetails(id: String!, source: String!) : MovieDetails
-        getMoview(page: Int!, source: String!) : [MovieDetails!]!
+        getMovieDetails(id: String!, source: String!) : MovieDetails!
+        getMovies(page: Int!, source: String!) : [MovieDetails!]!
+        getMoviesByGenre(genre: String!, source: String!) :[MovieDetails!]!
     }
 `
 module.exports = typeDefs;

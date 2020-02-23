@@ -7,7 +7,7 @@ export class PopcornAPI extends RESTDataSource {
     }
 
     detailReducer({_id, title, url, filesize, year, synopsis, runtime, released, certification, trailer, torrents, images} = {}) {
-        return {
+        return { 
             id : _id,
             title,
             year,
@@ -16,25 +16,36 @@ export class PopcornAPI extends RESTDataSource {
             released,
             certification,
             trailer,
-            images: images.poster,
+            images: images["poster"],
             url : torrents.en['720p'].url,
             filesize : torrents.en['720p'].filesize,
         }
     }
+    
 
     async getMovieDetail(id) {
         const result = await this.get(`movie/${id}`)
-        console.log(this.detailReducer(result))
+        
+        console.log(this.detailReducer(result).url)
         return this.detailReducer(result)
     }
 
     async getMoviesByPage(num) {
         const result = await this.get(`movies/${num}`)
-        return this.detailReducer(result)
+        return Promise.all(result.map(result => this.detailReducer(result)));
     }
 
-    getMoviesDetails(ids) {
-        return Promise.all(ids.map(id => this.getMovieDetail(id)));
+    async getMovieGenreIds(genre) {
+        const result = await this.get(`movies/2?sort=rating&order=-1&genre=${genre}`)
+        return Promise.all(result.map(result => this.detailReducer(result)));
+    }
+
+   async getMoviesDetails(genre) {
+        let MovieIds = await this.getMovieGenreIds(genre)
+         let data = await Promise.all(MovieIds.map(MovieId => this.getMovieDetail(MovieId)));
+        console.log(data);
+        return data
+        
     }
 }
 
