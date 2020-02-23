@@ -40,6 +40,12 @@ export class PopcornAPI extends RESTDataSource {
         return Promise.all(result.map(result => this.detailReducer(result)));
     }
 
+    async getMovieSearch(query) {
+        const result = await this.get(`movies/1?sort=rating&order=-1&genre=all&keywords=${query}`)
+        console.log(result);
+        return Promise.all(result.map(result => this.detailReducer(result)));
+    }
+
    async getMoviesDetails(genre) {
         let MovieIds = await this.getMovieGenreIds(genre)
          let data = await Promise.all(MovieIds.map(MovieId => this.getMovieDetail(MovieId)));

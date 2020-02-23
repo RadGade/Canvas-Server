@@ -11,6 +11,10 @@ const resolvers = {
 
     getMoviesByGenre: (_ , { genre, source }, { dataSources }) => {
         return dataSources[source].getMovieGenreIds(genre)
+    },
+
+    getMoviesByQuery: (_ , { query, source }, { dataSources }) => {
+        return dataSources[source].getMovieSearch(query, source)
     }
 }
 }

@@ -29,6 +29,7 @@ const {gql} = require('apollo-server');
         getMovieDetails(id: String!, source: String!) : MovieDetails!
         getMovies(page: Int!, source: String!) : [MovieDetails!]!
         getMoviesByGenre(genre: String!, source: String!) :[MovieDetails!]!
+        getMoviesByQuery(query: String!, source: String!) :[MovieDetails!]!
     }
 `
 module.exports = typeDefs;
