@@ -15,7 +15,12 @@ const resolvers = {
 
     getMoviesByQuery: (_ , { query, source }, { dataSources }) => {
         return dataSources[source].getMovieSearch(query, source)
-    }
+    },
+
+
+    getEpisodeDetails: (_, {id, source}, { dataSources }) => {
+        return dataSources[source].getShowDetails(id, source)
+},
 }
 }
 
