@@ -7,7 +7,13 @@
     "apollo-datasource-rest": "^0.7.0",
     "apollo-server": "^2.10.1",
     "graphql": "^14.6.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3"
   },
   "scripts": {
     "dev": "nodemon --exec babel-node index.js",
@@ -16,12 +22,6 @@
     "start": "babel-node server.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/node": "^7.8.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/register": "^7.8.3",
     "mocha": "^7.0.1",
     "node-fetch": "^2.6.0"
   }
