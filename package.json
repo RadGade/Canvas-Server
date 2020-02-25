@@ -19,7 +19,7 @@
     "dev": "nodemon --exec babel-node index.js",
     "build": "babel index.js -d dist",
     "heroku-postbuild": "yarn", 
-    "start": "babel-node server.js"
+    "start": "babel-node index.js"
   },
   "devDependencies": {
     "mocha": "^7.0.1",
