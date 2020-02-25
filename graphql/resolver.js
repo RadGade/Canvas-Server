@@ -5,8 +5,16 @@ const resolvers = {
             return dataSources[source].getMovieDetail(id, source)
     },
 
+    getShowDetails: (_, {id, source}, { dataSources }) => {
+        return dataSources[source].getShowDetails(id, source)
+},
+
     getMovies: (_, {page, source}, { dataSources }) =>  {
         return dataSources[source].getMoviesByPage(page, source)
+    },
+
+    getShows: (_, {page, source}, { dataSources }) =>  {
+        return dataSources[source].getShowsByPage(page, source)
     },
 
     getMoviesByGenre: (_ , { genre, source }, { dataSources }) => {
@@ -19,7 +27,7 @@ const resolvers = {
 
 
     getEpisodeDetails: (_, {id, source}, { dataSources }) => {
-        return dataSources[source].getShowDetails(id, source)
+        return dataSources[source].getEpisodeDetails(id, source)
 },
 }
 }

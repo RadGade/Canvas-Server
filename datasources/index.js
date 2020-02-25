@@ -1,4 +1,5 @@
-import {PopcornAPImovie, PopcornAPIshows} from './popcornapi';
+import {PopcornAPImovie} from './popcornapiMovies';
+import {PopcornAPIshows} from './popcornapiShows';
 
 
 export default {

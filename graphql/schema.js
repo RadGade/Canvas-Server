@@ -25,6 +25,18 @@ const {gql} = require('apollo-server');
         url : String
     }
 
+    type ShowDetails {
+        tvdb_id : Int!
+        imdb_id : String!
+        title : String!
+        year : String!
+        synopsis : String!
+        status : String
+        num_seasons : Int
+        images : String!
+        last_updated : Int
+    }
+
     type Episode {
         tvdb_id : Int
         title : String
@@ -37,8 +49,10 @@ const {gql} = require('apollo-server');
 
     type Query {
         getMovieDetails(id: String!, source: String!) : MovieDetails!
+        getShowDetails(id: String!, source: String!) : ShowDetails!
         getEpisodeDetails(id: String!, source: String!) : [Episode!]!
         getMovies(page: Int!, source: String!) : [MovieDetails!]!
+        getShows(page: Int!, source: String!) : [ShowDetails!]!
         getMoviesByGenre(genre: String!, source: String!) :[MovieDetails!]!
         getMoviesByQuery(query: String!, source: String!) :[MovieDetails!]!
     }

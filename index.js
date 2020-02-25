@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import resolvers from './graphql/resolver';
 import typeDefs from './graphql/schema';
 import dataSources from './datasources'
-
+const port = process.env.PORT || 3000;
 const server  = new ApolloServer({
     tracing: true,
     typeDefs,
@@ -13,4 +13,4 @@ const server  = new ApolloServer({
 });
 
 
-server.listen().then(({url}) => console.log(`Server launched at ${url} 🚀`))
+server.listen(port).then(({url}) => console.log(`Server launched at ${url} 🚀`))

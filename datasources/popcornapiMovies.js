@@ -53,34 +53,3 @@ export class PopcornAPImovie extends RESTDataSource {
 
     }
 }
-
-export class PopcornAPIshows extends RESTDataSource {
-  constructor() {
-    super()
-    this.baseURL = 'https://tv-v2.api-fetch.website/'
-  }
-
-  EpisodeDetailReducer({tvdb_id, title, season, episode, overview, first_aired, torrents} = {}) {
-    return {
-      tvdb_id,
-      title,
-      season,
-      episode,
-      overview,
-      first_aired,
-      url : JSON.stringify(torrents)
-    }
-  }
-
-  // ShowDetailReducer({tvdb_id, title, season, episode, overview, first_aired, torrents} = {}) {
-  //   return {
-  //     episodes : [],
-  //   }
-  // }
-
-  async getShowDetails(id) {
-    const result = await this.get(`show/${id}`)
-    return Promise.all(result.episodes.map(episode => this.EpisodeDetailReducer(episode)))
-  }
-
-}
